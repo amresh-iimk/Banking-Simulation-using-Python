@@ -1,5 +1,22 @@
+###############################################################################################################################
 #7477
-#Amresh Kumar
+#Author : Amresh Kumar
+#Date   : 26 Oct 2020
+#Project Name : Banking Portfolio Simulation
+#Sub-Project Name : Application Data Creation
+#Description - This piece of code creates the dummy application data.
+#
+# Overall flow of the project:
+#       1. Application data creation **
+#       2. Simulating bureau pull and data creation
+#       3. Applying a dummy scoring model (will replace later with a trained model) and policy parameters for decisioning
+#       4. Approved and Disbursed applications will be onboarded on to the portfolio
+#       5. Using probability and general portfolio characteristics, month on month performance of loans will be simulated
+#       6. Now that the initial version of portfolio is ready, we can use this data for analytics and reporting
+#       7. Fine tune the portfolio data for business seasonality and know cyclicity
+#
+#Other points TBD
+###############################################################################################################################
 
 import calendar
 import datetime
@@ -30,17 +47,17 @@ for i in range(1, book_month_range+1):
     total_appl_num += count_daily_Apple
     print(total_appl_num), print(count_daily_Apple)
     for j in range(1, count_daily_Apple):
-        app_Id = str(start_Year) + str(start_Month) +  ("000" + str(i))[-3:] + ("000" + str(j))[-3:]
-        rand_Seq = random.randrange(1,5,1)
-        first_name = applicant_Fname[rand_Seq]
-        rand_Seq2 = random.randrange(1, 5, 1)
-        second_name = applicant_Sname[rand_Seq2]
-        salary_dec = random.randrange(30000,100000,1000)
-        appln_amount = random.randrange(50000,1000000,10000)
-        num_dependent = random.randrange(1, 5, 1)
+        app_Id           = str(start_Year) + str(start_Month) +  ("000" + str(i))[-3:] + ("000" + str(j))[-3:]
+        rand_Seq         = random.randrange(1,5,1)
+        first_name       = applicant_Fname[rand_Seq]
+        rand_Seq2        = random.randrange(1, 5, 1)
+        second_name      = applicant_Sname[rand_Seq2]
+        salary_dec       = random.randrange(30000,100000,1000)
+        appln_amount     = random.randrange(50000,1000000,10000)
+        num_dependent    = random.randrange(1, 5, 1)
         total_experience = random.randrange(1, 35, 1)
-        current_job_exp = random.randrange(1, 10, 1)
-        app_data = pd.DataFrame({"app_Id"           : [app_Id],
+        current_job_exp  = random.randrange(1, 10, 1)
+                app_data = pd.DataFrame({"app_Id"   : [app_Id],
                                  "first_name"       : [first_name],
                                  "second_name"      : [second_name],
                                  "salary_dec"       : [salary_dec],
@@ -58,36 +75,3 @@ app_data_df.to_csv('app_data_df.csv', sep=',')
 
 
 #############################################################################################
-        app_data = pd.DataFrame(app_data)
-
-app_data_df = pd.DataFrame(app_data)
-
-
-app_data = (app_Id, first_name, salary_dec)
-app_data = {"app_Id": app_Id,
-            "first_name": first_name,
-            "salary_dec": salary_dec}
-
-
-#############################################################################################################
-months = []
-for i in range(1,13):
-    months.append((i, calendar.month_name[i]))
-print(months)
-
-for mnth in months:
-    x = calendar._monthlen(2019,1)
-    for y in range(x+1):
-        print(y)
-
-var = calendar.month_name[3]
-
-for month in calendar.month_name[1:]:
-    print(month)
-
-
-
-def get_random_string(length):
-    letters = string.ascii_lowercase
-    result_str = ''.join(random.sample(letters, length))
-    print("Random String is:", result_str)
